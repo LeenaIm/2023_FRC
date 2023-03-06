@@ -1,4 +1,5 @@
 # import libraries
+import pandas
 
 
 # *** functions go here ***
@@ -24,7 +25,6 @@ def num_check(question, error, num_type):
 
 # Checks that user has entered yes / no to a question
 def yes_no(question):
-
     to_check = ["yes", "no"]
 
     valid = False
@@ -40,6 +40,4 @@ def yes_no(question):
 
         print("Please enter either yes or no...\n")
 
-
 # *** Main routine goes here ***
-
