@@ -108,7 +108,7 @@ def get_expenses(var_fixed):
     expense_frame = expense_frame.set_index('Item')
 
     # Calculate cost of each component
-    expense_frame['Cost'] = expense_frame['Quantity'] * expense_frame['Price']
+    expense_frame['Cost'] = expense_frame['Quantity'] * expense_frame
 
     # Find sub-total
     sub_total = expense_frame['Cost'].sum()
@@ -222,6 +222,7 @@ print()
 have_fixed = yes_no("Do you have fixed costs (y / n)? ")
 
 if have_fixed == "yes":
+    # Get fixed costs
     fixed_expenses = get_expenses("fixed")
     fixed_frame = fixed_expenses[0]
     fixed_sub = fixed_expenses[1]

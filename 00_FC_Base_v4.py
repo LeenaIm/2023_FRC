@@ -1,6 +1,5 @@
 # import libraries
 import pandas
-import math
 
 
 # *** functions go here ***
@@ -87,16 +86,11 @@ def get_expenses(var_fixed):
         if item_name.lower() == "xxx":
             break
 
-        if var_fixed == "variable":
-            quantity = num_check("Quantity: ",
-                                 "The amount must be a whole number",
-                                 int)
-        else:
-            quantity = 1
-
+        quantity = num_check("Quantity: ",
+                             "The amount must be a whole number",
+                             int)
         price = num_check("How much for a single item? $",
-                          "The price must be a number <more "
-                          "tha 0>",
+                          "The price must be a number <more than zero>",
                           float)
 
         # add item, quantity and price to lists
@@ -108,7 +102,7 @@ def get_expenses(var_fixed):
     expense_frame = expense_frame.set_index('Item')
 
     # Calculate cost of each component
-    expense_frame['Cost'] = expense_frame['Quantity'] * expense_frame['Price']
+    expense_frame['Cost'] = expense_frame['Quantity'] * expense_frame
 
     # Find sub-total
     sub_total = expense_frame['Cost'].sum()
@@ -121,37 +115,31 @@ def get_expenses(var_fixed):
     return [expense_frame, sub_total]
 
 
-# Prints expense frames
-def expense_print(heading, frame, sub_total):
-    print()
-    print("**** {} Costs ****".format(heading))
-    print(frame)
-    print()
-    print("{} Costs: ${:.2f}".format(heading, sub_total))
-    return ""
-
-
 # *** Main Routine goes here ***
 # get product name
-product_name = not_blank("Product name: ",
-                         "The product name can't be blank")
+product_name = not_blank("Product name: ", "The product name can't be blank")
 
 print()
-print("Please enter your variables costs below...")
+print("Please enter your variable costs below...")
 # Get variable costs
 variable_expenses = get_expenses("variable")
 variable_frame = variable_expenses[0]
 variable_sub = variable_expenses[1]
 
 print()
-have_fixed = yes_no("Do you have fixed costs (y / n)? ")
+have_fixed = yes_no("Do you have fixed costs (y / n)?")
 
 if have_fixed == "yes":
+    # Get fixed costs
     fixed_expenses = get_expenses("fixed")
     fixed_frame = fixed_expenses[0]
     fixed_sub = fixed_expenses[1]
 else:
     fixed_sub = 0
+
+# Ask user for profit goal
+
+# Calculate recommended price
 
 # Write data to file
 
