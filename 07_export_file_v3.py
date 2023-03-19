@@ -30,6 +30,11 @@ to_write = [product_name, variable_txt, fixed_txt,
             profit_target, required_sales,
             recommended_price]
 
+# Print Stuff
+for item in to_write:
+    print(item)
+    print()
+
 # Write to file...
 # create file to hold data (add .txt extension)
 file_name = "{}.txt".format(product_name)
@@ -44,7 +49,3 @@ for item in to_write:
 text_file.close()
 
 
-# Print Stuff
-for item in to_write:
-    print(item)
-    print()
